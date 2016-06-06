@@ -8,7 +8,7 @@ const API_KEY = '?key=gdsafsgafefwesfasdaubkv';
 
 export function fetchPosts() {
   const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
-  
+  console.log('fetching posts')
   return {
     type: FETCH_POSTS,
     payload: request
@@ -21,6 +21,9 @@ export function createPost(props) {
   
   return {
     type: CREATE_POST,
-    payload: request
+    payload: () => {
+      console.log('request', request);
+      return request;
+    }
   }
 }
